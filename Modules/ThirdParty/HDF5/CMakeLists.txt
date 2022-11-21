@@ -61,6 +61,8 @@ endif()
     endif()
   endif()
 
+message(STATUS "==================")
+message(STATUS "ITKHDF5_LIBRARIES: ${ITKHDF5_LIBRARIES}")
   set(ITKHDF5_INCLUDE_DIRS
     ${ITKHDF5_BINARY_DIR}/src # itk_hdf5.h and itk_H5Cpp.h
   )
