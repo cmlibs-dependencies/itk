@@ -33,6 +33,6 @@ if(ITK_USE_SYSTEM_GOOGLETEST)
      endif()
 
    else()
-     find_package( GTest REQUIRED )
+     find_package( GoogleTest REQUIRED )
    endif ()
 endif()
