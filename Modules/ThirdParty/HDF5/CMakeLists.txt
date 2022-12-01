@@ -61,18 +61,23 @@ endif()
     endif()
   endif()
 
-message(STATUS "==================")
-message(STATUS "ITKHDF5_LIBRARIES: ${ITKHDF5_LIBRARIES}")
   set(ITKHDF5_INCLUDE_DIRS
     ${ITKHDF5_BINARY_DIR}/src # itk_hdf5.h and itk_H5Cpp.h
   )
+  foreach(hdf5_lib ${ITKHDF5_LIBRARIES})
+    if (TARGET ${hdf5_lib})
+      get_target_property(HDF5_INCLUDE_DIRS_TARGET ${hdf5_lib} INTERFACE_INCLUDE_DIRECTORIES)
+      list(APPEND HDF5_INCLUDE_DIRS ${HDF5_INCLUDE_DIRS_TARGET})
+    endif()
+  endforeach()
+  list(REMOVE_DUPLICATES HDF5_INCLUDE_DIRS)
+
   set(ITKHDF5_SYSTEM_INCLUDE_DIRS
     ${HDF5_INCLUDE_DIR}
     ${HDF5_INCLUDE_DIR_CPP}
     ${HDF5_INCLUDE_DIRS}
     ${HDF5_INCLUDE_DIR_CPP}
     )
-
   set(ITKHDF5_NO_SRC 1)
 else()
   set(ITKHDF5_INCLUDE_DIRS

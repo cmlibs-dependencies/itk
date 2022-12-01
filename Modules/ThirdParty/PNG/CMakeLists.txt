@@ -15,6 +15,10 @@ if(ITK_USE_SYSTEM_PNG)
     )
   set(ITKPNG_LIBRARIES "${PNG_LIBRARIES}")
   set(ITKPNG_NO_SRC 1)
+  if (TARGET png)
+    get_target_property(ITKPNG_SYSTEM_INCLUDE_DIRS png INTERFACE_INCLUDE_DIRECTORIES)
+    set(ITKPNG_LIBRARIES png)
+  endif()
 else()
   set(ITKPNG_INCLUDE_DIRS
     ${ITKPNG_BINARY_DIR}/src

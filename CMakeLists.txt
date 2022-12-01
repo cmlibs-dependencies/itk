@@ -471,6 +471,12 @@ if( ITK_USE_FFTWD OR ITK_USE_FFTWF )
   link_directories(${FFTW_LIBDIR})
 endif()
 
+
+if(ITK_USE_SYSTEM_ZLIB)
+  # Let us just find zlib
+  find_package(ZLIB)
+endif()
+
 set(ITK_USE_64BITS_IDS_DEFAULT "OFF")
 # Note WIN32 is true when targeting any windows system
 if(CMAKE_SIZEOF_VOID_P EQUAL "8" AND WIN32)
