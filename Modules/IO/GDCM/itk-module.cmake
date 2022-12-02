@@ -8,10 +8,10 @@ itk_module(ITKIOGDCM
     ITKCommon
     ITKIOImageBase
   PRIVATE_DEPENDS
-    ITKGDCM
+  ITKGDCM-ABI
   TEST_DEPENDS
     ITKTestKernel
-    ITKGDCM
+    ITKGDCM-ABI
     ITKImageIntensity
   FACTORY_NAMES
     ImageIO::GDCM
