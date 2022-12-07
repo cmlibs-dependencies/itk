@@ -126,7 +126,7 @@ macro(itk_module _name)
 endmacro()
 
 macro(itk_module_check_name _name)
-  if( NOT "${_name}" MATCHES "^[a-zA-Z][a-zA-Z0-9]*$")
+  if( NOT "${_name}" MATCHES "^[a-zA-Z][a-zA-Z0-9]*$" AND NOT "${_name}" MATCHES "ITKGDCM-ABI")
     message(FATAL_ERROR "Invalid module name: ${_name}")
   endif()
 endmacro()

@@ -105,19 +105,20 @@ endif()
 if( CMAKE_HOST_WIN32 AND NOT ITK_SKIP_PATH_LENGTH_CHECKS )
 
   string( LENGTH "${CMAKE_CURRENT_SOURCE_DIR}" n )
-  if( n GREATER 50 )
+  set(_MAX_LENGTH 100)
+  if( n GREATER _MAX_LENGTH )
     message(
       FATAL_ERROR
-      "ITK source code directory path length is too long (${n} > 50)."
+      "ITK source code directory path length is too long (${n} > ${_MAX_LENGTH})."
       "Please move the ITK source code directory to a directory with a shorter path."
       )
   endif()
 
   string( LENGTH "${CMAKE_CURRENT_BINARY_DIR}" n )
-  if( n GREATER 50 )
+  if( n GREATER _MAX_LENGTH )
     message(
       FATAL_ERROR
-      "ITK build directory path length is too long (${n} > 50)."
+      "ITK build directory path length is too long (${n} > ${_MAX_LENGTH})."
       "Please set the ITK build directory to a directory with a shorter path."
       )
   endif()
@@ -471,10 +472,20 @@ if( ITK_USE_FFTWD OR ITK_USE_FFTWF )
   link_directories(${FFTW_LIBDIR})
 endif()
 
+if(ITK_USE_SYSTEM_PNG)
+  # Let us just find png
+  find_package(PNG)
+  if(TARGET png)
+    set(PNG_LIBRARIES png)
+  endif()
+endif()
 
 if(ITK_USE_SYSTEM_ZLIB)
   # Let us just find zlib
   find_package(ZLIB)
+  if(TARGET zlib)
+    set(ZLIB_LIBRARY zlib)
+  endif()
 endif()
 
 set(ITK_USE_64BITS_IDS_DEFAULT "OFF")
