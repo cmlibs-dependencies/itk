@@ -480,6 +480,14 @@ if(ITK_USE_SYSTEM_PNG)
   endif()
 endif()
 
+if(ITK_USE_SYSTEM_JPEG)
+  # Let us just find jpeg
+  find_package(JPEG)
+  if(TARGET jpeg)
+    set(JPEG_LIBRARY jpeg)
+  endif()
+endif()
+
 if(ITK_USE_SYSTEM_ZLIB)
   # Let us just find zlib
   find_package(ZLIB)
