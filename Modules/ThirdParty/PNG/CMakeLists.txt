@@ -25,7 +25,7 @@ else()
     ${ITKPNG_SOURCE_DIR}/src
     )
   set(ITKPNG_LIBRARIES itkpng)
-  set(ITK_LIBRARY_PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS FALSE)
+  set(ITK_LIBRARY_PROPERTIES ${ITK_LIBRARY_PROPERTIES} WINDOWS_EXPORT_ALL_SYMBOLS FALSE)
 endif()
 
 configure_file(src/itk_png.h.in src/itk_png.h)

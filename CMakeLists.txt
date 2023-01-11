@@ -172,6 +172,7 @@ endif()
 if(NOT ITK_INSTALL_PACKAGE_DIR)
   set(ITK_INSTALL_PACKAGE_DIR "lib/cmake/ITK-${ITK_VERSION_MAJOR}.${ITK_VERSION_MINOR}")
 endif()
+set(ITK_LIBRARY_PROPERTIES DEBUG_POSTFIX d)
 
 # Override CMake's built-in add_* commands: assign LABELS to tests and targets
 # automatically. Depends on the CMake variable itk-module being set to the

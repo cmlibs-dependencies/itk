@@ -235,6 +235,7 @@ macro(itk_module_impl)
         COMPONENT Development
         )
     endif()
+    set_target_properties(${itk-module} PROPERTIES DEBUG_POSTFIX d)
     if( (ITK_MODULE_${itk-module}_ENABLE_SHARED AND BUILD_SHARED_LIBS) OR (APPLE AND NOT BUILD_SHARED_LIBS) )
       if (USE_COMPILER_HIDDEN_VISIBILITY)
         # Prefer to use target properties supported by newer cmake

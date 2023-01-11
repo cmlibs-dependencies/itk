@@ -16,6 +16,7 @@ endif()
 if(BUILD_SHARED_LIBS)
   set_target_properties(${NIFTI_NIFTILIB_NAME} PROPERTIES ${NIFTI_LIBRARY_PROPERTIES})
 endif()
+set_target_properties(${NIFTI_NIFTILIB_NAME} PROPERTIES DEBUG_POSTFIX d)
 
 if(UNIX)
   target_link_libraries(${NIFTI_NIFTILIB_NAME} PUBLIC m)
