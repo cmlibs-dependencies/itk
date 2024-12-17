@@ -18,6 +18,7 @@
 #ifndef itkMathematicalMorphologyEnums_h
 #define itkMathematicalMorphologyEnums_h
 
+#include <cstdint>
 #include <iostream>
 #include "ITKMathematicalMorphologyExport.h"
 
